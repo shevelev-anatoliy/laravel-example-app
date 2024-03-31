@@ -1,7 +1,5 @@
-<x-layouts.main>
-    <x-slot:title>
-        Контакты
-    </x-slot:title>
+<x-layouts.base>
+    <x-slot:title>Контакты</x-slot:title>
 
     Контакты
-</x-layouts.main>
+</x-layouts.base>
