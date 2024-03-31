@@ -1,7 +1,7 @@
 <x-layouts.main>
     <x-slot:title>
-        Главная
+        Контакты
     </x-slot:title>
 
-    Главная
+    Контакты
 </x-layouts.main>
