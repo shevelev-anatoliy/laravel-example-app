@@ -1,6 +1,10 @@
 <?php
 
+use App\Models\Slide;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'home.index')->name('home');
-Route::view('/contacts', 'contacts.index')->name('contacts');
+
+Route::get('/contacts', static function () {
+    return view('contacts.index');
+})->name('contacts');
