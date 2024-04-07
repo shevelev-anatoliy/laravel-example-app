@@ -5,13 +5,15 @@ namespace App\Http\Controllers;
 use App\Events\MessageSent;
 use App\Http\Requests\MessageFormRequest;
 use App\Models\Message;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
 class ChatController extends Controller
 {
-    public function index(): View
+    public function index(): Factory|View|Application
     {
         auth()->loginUsingId(1);
 

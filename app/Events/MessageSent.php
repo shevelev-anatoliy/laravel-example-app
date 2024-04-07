@@ -22,6 +22,8 @@ class MessageSent implements ShouldBroadcast
 
     /**
      * Create a new event instance.
+     *
+     * @return void
      */
     public function __construct(User $user, Message $message)
     {
@@ -32,12 +34,10 @@ class MessageSent implements ShouldBroadcast
     /**
      * Get the channels the event should broadcast on.
      *
-     * @return array<int, \Illuminate\Broadcasting\Channel>
+     * @return \Illuminate\Broadcasting\Channel|array
      */
-    public function broadcastOn(): array
+    public function broadcastOn()
     {
-        return [
-            new PrivateChannel('chat'),
-        ];
+        return new PrivateChannel('chat');
     }
 }
