@@ -11,4 +11,6 @@ Route::get('/contacts', static function () {
 
 Route::controller(ChatController::class)->group(function () {
     Route::get('/chat', 'index')->name('chat');
+    Route::get('/messages', 'messages');
+    Route::post('/send', 'send');
 });
