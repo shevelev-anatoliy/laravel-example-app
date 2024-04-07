@@ -10,7 +10,7 @@
     <script src="//unpkg.com/alpinejs" defer></script>
 </head>
 <body>
-    <div class="page-content flex flex-col">
+    <div id="app" class="page-content flex flex-col">
         <header class="flex-initial">
             @include('includes.navbar')
         </header>
