@@ -14,3 +14,5 @@ Route::controller(ChatController::class)->group(function () {
     Route::get('/messages', 'messages');
     Route::post('/send', 'send');
 });
+
+Route::view('/registration', 'registration.index')->name('registration');
