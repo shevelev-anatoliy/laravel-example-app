@@ -11,7 +11,7 @@ class LoginController extends Controller
 {
     public function store(StoreRequest $request)
     {
-        $data = $request->only(['phone', 'email', 'password']);
+        $data = $request->only(['email', 'password']);
 
         $remember = (bool) $request->input('remember');
 
@@ -43,6 +43,6 @@ class LoginController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->route('login');
+        return redirect()->route('user');
     }
 }
