@@ -1,5 +1,13 @@
 <x-layouts.auth>
-    <x-slot:title>Вход в аккаунт</x-slot:title>
+    <x-slot:title>
+        Вход в аккаунт
+    </x-slot:title>
+
+    @auth
+        <div class="py-4 text-center">
+            {{ Auth::user()->email }}
+        </div>
+    @endauth
 
     <x-card>
         <x-card.body>

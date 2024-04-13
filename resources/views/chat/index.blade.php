@@ -1,7 +1,7 @@
 <x-layouts.base>
     <x-slot:title>Чат</x-slot:title>
 
-    @if(auth()->check())
+    @auth
     <div>{{ auth()->user()->first_name }}</div>
 
     <div class="flex h-96 antialiased text-gray-800">
@@ -20,5 +20,5 @@
 
     @else
         Чат доступен только авторизованным пользователям
-    @endif
+    @endauth
 </x-layouts.base>

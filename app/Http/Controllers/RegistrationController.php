@@ -4,19 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Registration\StoreRequest;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class RegistrationController extends Controller
 {
     public function store(StoreRequest $request)
     {
-        $data = $request->only([
-            'first_name',
-            'email',
-            'password',
-        ]);
+        $data = $request->only(['first_name', 'email', 'password']);
 
-        User::query()->create($data);
+        $user = User::query()->create($data);
 
-        return redirect()->route('registration');
+        Auth::login($user);
+
+        return redirect()->route('login');
     }
 }
