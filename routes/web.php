@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\ChatController;
 use Illuminate\Support\Facades\Route;
@@ -18,3 +19,6 @@ Route::controller(ChatController::class)->group(function () {
 
 Route::view('/registration', 'registration.index')->name('registration');
 Route::post('/registration', [RegistrationController::class, 'store'])->name('registration.store');
+
+Route::view('/login', 'login.index')->name('login');
+Route::post('/login', [LoginController::class, 'store'])->name('login.store');
