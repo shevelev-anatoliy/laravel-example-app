@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\GenderEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -16,6 +17,7 @@ class User extends Authenticatable
         'first_name',
         'middle_name',
         'last_name',
+        'gender',
         'email',
         'password',
     ];
@@ -28,6 +30,7 @@ class User extends Authenticatable
     protected function casts(): array
     {
         return [
+            'gender' => GenderEnum::class,
             'online_at' => 'datetime',
             'password' => 'hashed',
         ];
