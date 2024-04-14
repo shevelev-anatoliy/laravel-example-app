@@ -40,4 +40,13 @@ class User extends Authenticatable
     {
         return $this->hasMany(Message::class);
     }
+
+    public function getFullName(): string
+    {
+        return implode(' ', array_filter([
+            $this->first_name,
+            $this->middle_name,
+            $this->last_name,
+        ]));
+    }
 }
