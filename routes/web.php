@@ -23,7 +23,7 @@ Route::middleware('guest')->group(function () {
 
 Route::post('logout', [LogoutController::class, 'logout'])->name('logout')->middleware('auth');
 
-Route::middleware(\Illuminate\Auth\Middleware\Authenticate::class)->group(function () {
+Route::middleware(['auth', 'online'])->group(function () {
     Route::redirect('/user', '/user/settings')->name('user');
     Route::get('/user/settings', [SettingsController::class, 'index'])->name('user.settings');
 

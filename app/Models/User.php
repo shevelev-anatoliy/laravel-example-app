@@ -12,6 +12,7 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
 
     protected $fillable = [
+        'online_at',
         'first_name',
         'middle_name',
         'last_name',
@@ -27,6 +28,7 @@ class User extends Authenticatable
     protected function casts(): array
     {
         return [
+            'online_at' => 'datetime',
             'password' => 'hashed',
         ];
     }

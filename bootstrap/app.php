@@ -12,7 +12,11 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        $middleware->redirectUsersTo('user');
+        $middleware
+            ->redirectUsersTo('user')
+            ->alias([
+                'online' => \App\Http\Middleware\OnlineMiddleware::class,
+            ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
