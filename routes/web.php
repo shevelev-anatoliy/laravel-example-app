@@ -2,9 +2,10 @@
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\ChatController;
-use App\Http\Controllers\User\Settings\PasswordController;
+use App\Http\Controllers\User\Settings\PasswordController as UserPasswordController;
 use App\Http\Controllers\User\Settings\ProfileController;
 use App\Http\Controllers\User\SettingsController;
 use Illuminate\Support\Facades\Route;
@@ -36,8 +37,8 @@ Route::middleware(['auth', 'online'])->group(function () {
     Route::get('/user/settings', [SettingsController::class, 'index'])->name('user.settings');
     Route::get('/user/settings/profile', [ProfileController::class, 'edit'])->name('user.settings.profile.edit');
     Route::post('/user/settings/profile', [ProfileController::class, 'update'])->name('user.settings.profile.update');
-    Route::get('/user/settings/password', [PasswordController::class, 'edit'])->name('user.settings.password.edit');
-    Route::post('/user/settings/password', [PasswordController::class, 'update'])->name('user.settings.password.update');
+    Route::get('/user/settings/password', [UserPasswordController::class, 'edit'])->name('user.settings.password.edit');
+    Route::post('/user/settings/password', [UserPasswordController::class, 'update'])->name('user.settings.password.update');
 
     Route::controller(ChatController::class)->group(function () {
         Route::get('/chat', 'index')->name('chat');
