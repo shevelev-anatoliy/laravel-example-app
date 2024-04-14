@@ -15,7 +15,7 @@
             @include('includes.navbar')
         </header>
 
-        <main class="flex-auto">
+        <main class="flex-auto py-4">
             <div class="container">
                 {{ $slot }}
             </div>

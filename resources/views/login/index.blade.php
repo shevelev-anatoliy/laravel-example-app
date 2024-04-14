@@ -38,7 +38,7 @@
     <x-slot:crosslink>
         Нет аккаунта?
 
-        <x-link to="{{ route('registration') }}">
+        <x-link href="{{ route('registration') }}">
             Зарегистрироваться
         </x-link>
     </x-slot:crosslink>
