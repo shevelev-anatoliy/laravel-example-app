@@ -21,6 +21,12 @@ Route::middleware('guest')->group(function () {
 
     Route::view('/login', 'login.index')->name('login');
     Route::post('/login', [LoginController::class, 'store'])->name('login.store');
+
+    Route::view('/password', 'password.index')->name('password');
+    Route::post('/password', [PasswordController::class, 'store'])->name('password.store');
+    Route::view('/password/confirm', 'password.confirm')->name('password.confirm');
+    Route::view('/password/{code}', 'password.edit')->name('password.edit');
+    Route::post('/password/{code}', [PasswordController::class, 'update'])->name('password.update');
 });
 
 Route::post('logout', [LogoutController::class, 'logout'])->name('logout')->middleware('auth');
