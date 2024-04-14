@@ -4,3 +4,11 @@ function active_link(string $route, string $active = 'active', string $notActive
 {
     return request()->routeIs($route) ? $active : $notActive;
 }
+
+function app_url(string $path = ''): string
+{
+    return implode('/', array_filter([
+        trim(config('app.url'), '/'),
+        trim($path, '/'),
+    ]));
+}
