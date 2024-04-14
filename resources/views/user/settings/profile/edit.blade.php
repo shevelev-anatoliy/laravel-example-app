@@ -17,7 +17,7 @@
                 <x-slot:value>
                     <div class="grid grid-cols-2">
                         <div class="col-span-2 md:col-span-1">
-                            <x-form.text name="first_name" :value="$user->first_name" />
+                            <x-form.text name="first_name" :value="$user->first_name" autofocus />
                         </div>
                     </div>
                 </x-slot:value>
