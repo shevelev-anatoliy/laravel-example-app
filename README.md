@@ -2,7 +2,7 @@
 
 Скопировать файд **.env.example**
 
-`php artisan key:genarate`
+`php artisan key:generate`
 
 Обновить конфиги подключение к **БД** и аутентификации в **pusher**.
 
