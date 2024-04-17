@@ -13,8 +13,8 @@ class CreateUserCommand extends Command
     {
         $user = new User();
         $user->first_name = $this->ask('Имя', 'Test');
-        $user->email = $this->ask('Email', 'test@foo.bar');
-        $user->password = $this->ask('Пароль', 'Secret123!');
+        $user->email = $this->ask('Email', 'tolik.breathless@gmail.com');
+        $user->password = $this->ask('Пароль', 'Qwerty_123');
         $user->save();
 
         $this->info('Пользователь создан');
