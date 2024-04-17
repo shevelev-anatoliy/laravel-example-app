@@ -1,5 +1,7 @@
 <?php
 
+use App\Console\Commands\Passwords\ExpirePasswordsCommand;
+use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -11,6 +13,9 @@ return Application::configure(basePath: dirname(__DIR__))
         channels: __DIR__.'/../routes/channels.php',
         health: '/up',
     )
+    ->withSchedule(function (Schedule $schedule) {
+        $schedule->command(ExpirePasswordsCommand::class)->weekly();
+    })
     ->withMiddleware(function (Middleware $middleware) {
         $middleware
             ->redirectUsersTo('user')
