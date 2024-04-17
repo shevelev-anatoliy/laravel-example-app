@@ -11,9 +11,11 @@
         <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]">
             {{ $slot }}
 
-            <div class="p-4 text-center text-sm text-gray-500">
-                {{ $crosslink }}
-            </div>
+            @isset($crosslink)
+                <div class="p-4 text-center text-sm text-gray-500">
+                    {{ $crosslink }}
+                </div>
+            @endisset
         </div>
     </div>
 </x-layouts.base>

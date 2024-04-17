@@ -15,6 +15,10 @@
             @include('includes.navbar')
         </header>
 
+        <div class="flex-initial">
+            <x-user.email-confirmation-alert />
+        </div>
+
         <main class="flex-auto py-4">
             <div class="container">
                 {{ $slot }}
