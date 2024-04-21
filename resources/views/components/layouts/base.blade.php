@@ -8,7 +8,8 @@
         <title>Laravel Example App</title>
 
         @vite(['resources/css/app.css', 'resources/js/app.js'])
-        <script src="//unpkg.com/alpinejs" defer></script>
+        @livewireStyles
+        @livewireScripts
     </head>
 
     <body>
