@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Validation\Rules\Password;
+use SocialiteProviders\Manager\SocialiteWasCalled;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,6 +17,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->setPasswordDefault();
+
+        $this->registerSocialite();
     }
 
     private function setPasswordDefault(): void
@@ -25,6 +29,13 @@ class AppServiceProvider extends ServiceProvider
                 ->mixedCase()
                 ->numbers()
                 ->symbols();
+        });
+    }
+
+    private function registerSocialite(): void
+    {
+        Event::listen(function (SocialiteWasCalled $event) {
+            $event->extendSocialite('vkontakte', \SocialiteProviders\VKontakte\Provider::class);
         });
     }
 }
