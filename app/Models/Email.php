@@ -2,14 +2,13 @@
 
 namespace App\Models;
 
-use App\Enums\Passwords\PasswordStatusEnum;
+use App\Enums\Email\EmailStatusEnum;
 use App\Traits\BelongsToUser;
 use App\Traits\HasUuid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Password extends Model
+class Email extends Model
 {
     use BelongsToUser;
     use HasFactory;
@@ -17,20 +16,19 @@ class Password extends Model
 
     protected $fillable = [
         'uuid',
-        'email',
+        'value',
         'user_id',
         'status',
-        'ip',
     ];
 
     protected function casts(): array
     {
         return [
-            'status' => PasswordStatusEnum::class,
+            'status' => EmailStatusEnum::class,
         ];
     }
 
-    public function updateStatus(PasswordStatusEnum $status): bool
+    public function updateStatus(EmailStatusEnum $status): bool
     {
         if ($this->status->is($status)) {
             return false;

@@ -21,9 +21,6 @@ class ExpirePasswordsCommand extends Command
 
     private function expirePasswords(): void
     {
-        // получить просроченые активные заявки
-        // обновить их статусы на просроченные
-
         Password::query()
             ->where('status', PasswordStatusEnum::pending)
             ->where('created_at', '<=', now()->subHours(1))

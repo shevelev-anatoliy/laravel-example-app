@@ -14,7 +14,7 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withSchedule(function (Schedule $schedule) {
-        $schedule->command(ExpirePasswordsCommand::class)->weekly();
+        $schedule->command(ExpirePasswordsCommand::class)->hourly();
     })
     ->withMiddleware(function (Middleware $middleware) {
         $middleware

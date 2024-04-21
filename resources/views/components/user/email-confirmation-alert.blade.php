@@ -1,4 +1,4 @@
-@unless (Auth::user()->isEmailConfirmed())
+@unless (Auth::user()?->isEmailConfirmed())
     <div class="border-l-4 border-yellow-400 bg-yellow-50 p-4">
         <div class="flex">
             <div class="flex-shrink-0">
