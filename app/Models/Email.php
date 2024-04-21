@@ -19,13 +19,22 @@ class Email extends Model
         'value',
         'user_id',
         'status',
+        'code',
     ];
 
     protected function casts(): array
     {
         return [
             'status' => EmailStatusEnum::class,
+            'code' => 'encrypted',
         ];
+    }
+
+    public static function booted(): void
+    {
+        self::creating(function (Email $email) {
+            $email->code = code();
+        });
     }
 
     public function updateStatus(EmailStatusEnum $status): bool
