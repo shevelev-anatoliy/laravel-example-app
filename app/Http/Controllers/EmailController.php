@@ -25,26 +25,23 @@ class EmailController extends Controller
         return view('email.confirmation', compact('email'));
     }
 
-    public function link(Request $request, Email $email)
+    public function confirm(Request $request, Email $email)
     {
         abort_if($email->user->isEmailConfirmed(), 404);
         abort_unless($email->status->is(EmailStatusEnum::pending), 404);
 
-        $email->user->confirmEmail();
-        $email->updateStatus(EmailStatusEnum::completed);
+        $validator = validator($request->only('code'), ['code' => 'required|string']);
 
-        return redirect()->intended('/user');
-    }
+        if ($validator->fails()) {
+            return to_route('email.confirmation')
+                ->withErrors(['code' => $validator->errors()->first()])
+                ->withInput();
+        }
 
-    public function code(Request $request, Email $email)
-    {
-        abort_if($email->user->isEmailConfirmed(), 404);
-        abort_unless($email->status->is(EmailStatusEnum::pending), 404);
-
-        $validated = $request->validate(['code' => 'required|string']);
-
-        if ($email->code !== $validated['code']) {
-            return back()->withErrors(['code' => 'Неверный код.'])->withInput();
+        if ($email->code !== $request->input('code')) {
+            return to_route('email.confirmation')
+                ->withErrors(['code' => 'Неверный код.'])
+                ->withInput();
         }
 
         $email->user->confirmEmail();
@@ -53,7 +50,7 @@ class EmailController extends Controller
         return redirect()->intended('/user');
     }
 
-    public function send(Request $request, Email $email)
+    public function send(Email $email)
     {
         if (session('email-confirmation-sent')) {
             return back();
