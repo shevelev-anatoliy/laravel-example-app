@@ -14,6 +14,7 @@ class CreateUserCommand extends Command
         $user = new User();
         $user->first_name = $this->ask('Имя', 'Test');
         $user->email = $this->ask('Email', 'tolik.breathless@gmail.com');
+        $user->email_confirmed_at = now();
         $user->password = $this->ask('Пароль', 'Qwerty_123');
         $user->save();
 
