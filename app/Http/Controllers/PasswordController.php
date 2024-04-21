@@ -7,7 +7,7 @@ use App\Http\Requests\Password\StoreRequest;
 use App\Http\Requests\Password\UpdateRequest;
 use App\Models\Password;
 use App\Models\User;
-use App\Notifications\Password\ConfirmNotification;
+use App\Notifications\Password\ConfirmPasswordNotification;
 use Illuminate\Support\Facades\Auth;
 
 class PasswordController extends Controller
@@ -25,7 +25,7 @@ class PasswordController extends Controller
         $password = Password::query()
             ->create(compact('ip', 'email') + ['user_id' => $user?->id]);
 
-        $user?->notify(new ConfirmNotification($password));
+        $user?->notify(new ConfirmPasswordNotification($password));
 
         return to_route('password.confirm');
     }
