@@ -152,6 +152,7 @@ return [
         'address'                  => 'адрес',
         'affiliate_url'            => 'Партнёрская ссылка',
         'age'                      => 'возраст',
+        'agreement'                => 'Соглашение',
         'amount'                   => 'количество',
         'announcement'             => 'анонс',
         'area'                     => 'область',
@@ -160,6 +161,7 @@ return [
         'birthday'                 => 'дата рождения',
         'body'                     => 'контент',
         'city'                     => 'город',
+        'code'                     => 'код',
         'compilation'              => 'компиляция',
         'concept'                  => 'концепт',
         'conditions'               => 'условия',
@@ -269,7 +271,5 @@ return [
         'username'                 => 'никнейм',
         'value'                    => 'значение',
         'year'                     => 'год',
-        'code'                     => 'код',
-        'agreement'                => 'Соглашение',
     ],
 ];
