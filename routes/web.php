@@ -6,6 +6,7 @@ use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\SocialController;
 use App\Http\Controllers\User\Settings\PasswordController as UserPasswordController;
 use App\Http\Controllers\User\Settings\ProfileController;
 use App\Http\Controllers\User\SettingsController;
@@ -53,3 +54,6 @@ Route::middleware(['auth', 'online'])->group(function () {
         Route::post('/send', 'send');
     });
 });
+
+Route::get('/social/{driver}/redirect', [SocialController::class, 'redirect'])->name('social.redirect');
+Route::get('/social/{driver}/callback', [SocialController::class, 'callback'])->name('social.callback');
