@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
+use App\MoonShine\Pages\ExamplePage;
 use MoonShine\Providers\MoonShineApplicationServiceProvider;
 use MoonShine\MoonShine;
 use MoonShine\Menu\MenuGroup;
@@ -49,6 +50,11 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                    new MoonShineUserRoleResource()
                ),
             ]),
+
+            MenuItem::make(
+                'Custom page',
+                ExamplePage::make('Custom page', 'custom_page')
+            ),
         ];
     }
 
