@@ -19,10 +19,6 @@ class Social extends Model
         'driver', 'driver_user_id',
     ];
 
-    protected $casts = [
-        'driver' => SocialDriverEnum::class,
-    ];
-
     protected function casts(): array
     {
         return [
