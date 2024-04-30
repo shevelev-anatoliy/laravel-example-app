@@ -9,6 +9,7 @@ use MoonShine\Components\MoonShineComponent;
 
 class Dashboard extends Page
 {
+    public string $title = 'Главная';
     /**
      * @return array<string, string>
      */
@@ -21,7 +22,7 @@ class Dashboard extends Page
 
     public function title(): string
     {
-        return $this->title ?: 'Dashboard';
+        return $this->title ?: 'Главная';
     }
 
     /**
