@@ -36,6 +36,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Event::listen(function (SocialiteWasCalled $event) {
             $event->extendSocialite('vkontakte', \SocialiteProviders\VKontakte\Provider::class);
+            $event->extendSocialite('telegram', \SocialiteProviders\Telegram\Provider::class);
         });
     }
 }
