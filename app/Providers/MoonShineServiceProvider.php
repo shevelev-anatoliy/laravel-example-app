@@ -6,6 +6,7 @@ namespace App\Providers;
 
 use App\MoonShine\Pages\ExamplePage;
 use App\MoonShine\Resources\PostResource;
+use App\MoonShine\Resources\SlideResource;
 use MoonShine\Providers\MoonShineApplicationServiceProvider;
 use MoonShine\MoonShine;
 use MoonShine\Menu\MenuGroup;
@@ -57,7 +58,9 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                 ExamplePage::make('Custom page', 'custom_page')
             ),
 
-            MenuItem::make('Статьи', new PostResource())
+            MenuItem::make('Статьи', new PostResource()),
+
+            MenuItem::make('Слайды', new SlideResource()),
         ];
     }
 

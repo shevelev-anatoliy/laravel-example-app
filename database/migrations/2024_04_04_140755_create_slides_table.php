@@ -14,7 +14,10 @@ return new class extends Migration
         Schema::create('slides', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->integer('posit', false, true)->default(1);
+
+            $table->integer('posit')
+                ->unsigned()
+                ->default(1);
             $table->string('image', 255);
         });
     }
