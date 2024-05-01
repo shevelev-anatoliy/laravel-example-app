@@ -9,6 +9,7 @@
         "laravel/framework": "^11.0",
         "laravel/socialite": "^5.12",
         "laravel/tinker": "^2.9",
+        "lee-to/moonshine-tree-resource": "^1.2",
         "livewire/livewire": "^3.4",
         "moonshine/moonshine": "^2.12",
         "pusher/pusher-php-server": "^7.2",

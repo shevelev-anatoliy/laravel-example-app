@@ -6,14 +6,12 @@ namespace App\MoonShine\Resources;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Slide;
+use App\MoonShine\Pages\Slide\SlideIndexPage;
+use App\MoonShine\Pages\Slide\SlideFormPage;
+use App\MoonShine\Pages\Slide\SlideDetailPage;
 
-use MoonShine\Fields\Field;
-use MoonShine\Fields\Image;
-use MoonShine\Fields\Number;
-use MoonShine\Fields\ID;
 use MoonShine\Resources\ModelResource;
-use MoonShine\Decorations\Block;
-use MoonShine\Components\MoonShineComponent;
+use MoonShine\Pages\Page;
 
 /**
  * @extends ModelResource<Slide>
@@ -25,21 +23,18 @@ class SlideResource extends ModelResource
     protected string $title = 'Slides';
 
     /**
-     * @return list<MoonShineComponent|Field>
+     * @return list<Page>
      */
-    public function fields(): array
+    public function pages(): array
     {
         return [
-            Block::make([
-                ID::make()
-                    ->sortable(),
-                Image::make('Изображение', 'image')
-                    ->dir('slides')
-                    ->removable(),
-                Number::make('Позиция', 'posit')
-                    ->default(1)
-                    ->sortable(),
-            ]),
+            SlideIndexPage::make($this->title()),
+            SlideFormPage::make(
+                $this->getItemID()
+                    ? __('moonshine::ui.edit')
+                    : __('moonshine::ui.add')
+            ),
+            SlideDetailPage::make(__('moonshine::ui.show')),
         ];
     }
 
