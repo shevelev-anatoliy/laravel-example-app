@@ -10,6 +10,7 @@ use App\MoonShine\Pages\Slide\SlideIndexPage;
 use App\MoonShine\Pages\Slide\SlideFormPage;
 use App\MoonShine\Pages\Slide\SlideDetailPage;
 
+use MoonShine\Enums\PageType;
 use MoonShine\Resources\ModelResource;
 use MoonShine\Pages\Page;
 
@@ -21,6 +22,8 @@ class SlideResource extends ModelResource
     protected string $model = Slide::class;
 
     protected string $title = 'Slides';
+
+    protected ?PageType $redirectAfterSave = PageType::INDEX;
 
     /**
      * @return list<Page>
