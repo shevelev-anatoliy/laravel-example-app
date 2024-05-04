@@ -12,6 +12,16 @@ class Post extends Model
     use HasChangeLog;
 
     public $fillable = [
-        'title', 'content',
+        'title',
+        'slug',
+        'content',
+        'active',
     ];
+
+    protected function casts(): array
+    {
+        return [
+            'active' => 'boolean',
+        ];
+    }
 }

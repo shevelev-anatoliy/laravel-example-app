@@ -53,14 +53,11 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                ),
             ]),
 
-            MenuItem::make(
-                'Custom page',
-                ExamplePage::make('Custom page', 'custom_page')
-            ),
+            MenuGroup::make(static fn() => 'Ресурсы', [
+                MenuItem::make('Статьи', new PostResource()),
 
-            MenuItem::make('Статьи', new PostResource()),
-
-            MenuItem::make('Слайды', new SlideResource()),
+                MenuItem::make('Слайды', new SlideResource()),
+            ]),
         ];
     }
 
