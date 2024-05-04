@@ -7,6 +7,7 @@ namespace App\MoonShine\Resources;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Post;
 
+use MoonShine\Handlers\ExportHandler;
 use MoonShine\Resources\ModelResource;
 use MoonShine\Decorations\Block;
 use MoonShine\Fields\ID;
@@ -32,8 +33,12 @@ class PostResource extends ModelResource
         return [
             Block::make([
                 ID::make()->sortable(),
-                Text::make('Заголовок', 'title'),
-                TinyMce::make('Контент', 'content'),
+                Text::make('Заголовок', 'title')
+                    ->showOnExport(true)
+                    ->useOnImport(true),
+                TinyMce::make('Контент', 'content')
+                    ->showOnExport(true)
+                    ->useOnImport(true),
             ]),
         ];
     }
@@ -43,6 +48,13 @@ class PostResource extends ModelResource
         return [
             Text::make('Заголовок', 'title'),
         ];
+    }
+
+    public function export(): ?ExportHandler
+    {
+        return ExportHandler::make('Экспорт')
+            ->disk('public')
+            ->dir('/exports');
     }
 
     /**
