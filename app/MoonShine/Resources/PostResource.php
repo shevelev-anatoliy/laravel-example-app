@@ -7,6 +7,8 @@ namespace App\MoonShine\Resources;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Post;
 
+use MoonShine\ChangeLog\Components\ChangeLog;
+use MoonShine\Enums\Layer;
 use MoonShine\Handlers\ExportHandler;
 use MoonShine\Resources\ModelResource;
 use MoonShine\Decorations\Block;
@@ -48,6 +50,16 @@ class PostResource extends ModelResource
         return [
             Text::make('Заголовок', 'title'),
         ];
+    }
+
+    protected function onBoot(): void
+    {
+        $this->getPages()
+            ->formPage()
+            ->pushToLayer(
+                Layer::BOTTOM,
+                ChangeLog::make('История изменений', $this)->limit(2)
+            );
     }
 
     public function export(): ?ExportHandler
