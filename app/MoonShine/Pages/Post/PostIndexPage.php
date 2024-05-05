@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace App\MoonShine\Pages\Slide;
+namespace App\MoonShine\Pages\Post;
 
 use MoonShine\Decorations\Block;
 use MoonShine\Fields\ID;
-use MoonShine\Fields\Image;
-use MoonShine\Fields\Number;
+use MoonShine\Fields\Switcher;
+use MoonShine\Fields\Text;
 use MoonShine\Pages\Crud\IndexPage;
 use MoonShine\Components\MoonShineComponent;
 use MoonShine\Fields\Field;
 use Throwable;
 
-class SlideIndexPage extends IndexPage
+class PostIndexPage extends IndexPage
 {
     /**
      * @return list<MoonShineComponent|Field>
@@ -23,10 +23,21 @@ class SlideIndexPage extends IndexPage
         return [
             Block::make([
                 ID::make()
-                    ->sortable(),
-                Image::make('Изображение', 'image'),
-                Number::make('Позиция', 'posit')
-                    ->sortable(),
+                    ->showOnExport(true)
+                    ->useOnImport(true),
+                Text::make('Заголовок', 'title')
+                    ->showOnExport(true)
+                    ->useOnImport(true),
+                Text::make('Slug', 'slug')
+                    ->showOnExport(true)
+                    ->useOnImport(true),
+                Text::make('Контент', 'content')
+                    ->showOnExport(true)
+                    ->useOnImport(true),
+                Switcher::make('Активный', 'active')
+                    ->updateOnPreview()
+                    ->showOnExport(true)
+                    ->useOnImport(true),
             ]),
         ];
     }

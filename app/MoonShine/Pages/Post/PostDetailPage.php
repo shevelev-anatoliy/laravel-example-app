@@ -2,18 +2,17 @@
 
 declare(strict_types=1);
 
-namespace App\MoonShine\Pages\Slide;
+namespace App\MoonShine\Pages\Post;
 
-use MoonShine\Decorations\Block;
 use MoonShine\Fields\ID;
-use MoonShine\Fields\Image;
-use MoonShine\Fields\Number;
-use MoonShine\Pages\Crud\IndexPage;
+use MoonShine\Fields\Switcher;
+use MoonShine\Fields\Text;
+use MoonShine\Pages\Crud\DetailPage;
 use MoonShine\Components\MoonShineComponent;
 use MoonShine\Fields\Field;
 use Throwable;
 
-class SlideIndexPage extends IndexPage
+class PostDetailPage extends DetailPage
 {
     /**
      * @return list<MoonShineComponent|Field>
@@ -21,13 +20,11 @@ class SlideIndexPage extends IndexPage
     public function fields(): array
     {
         return [
-            Block::make([
-                ID::make()
-                    ->sortable(),
-                Image::make('Изображение', 'image'),
-                Number::make('Позиция', 'posit')
-                    ->sortable(),
-            ]),
+            ID::make(),
+            Text::make('Заголовок', 'title'),
+            Text::make('Slug', 'slug'),
+            Text::make('Контент', 'content'),
+            Switcher::make('Активный', 'active'),
         ];
     }
 

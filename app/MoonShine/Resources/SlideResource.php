@@ -11,6 +11,8 @@ use App\MoonShine\Pages\Slide\SlideFormPage;
 use App\MoonShine\Pages\Slide\SlideDetailPage;
 
 use MoonShine\Enums\PageType;
+use MoonShine\Handlers\ExportHandler;
+use MoonShine\Handlers\ImportHandler;
 use MoonShine\Resources\ModelResource;
 use MoonShine\Pages\Page;
 
@@ -50,5 +52,15 @@ class SlideResource extends ModelResource
     public function rules(Model $item): array
     {
         return [];
+    }
+
+    public function export(): ?ExportHandler
+    {
+        return null;
+    }
+
+    public function import(): ?ImportHandler
+    {
+        return null;
     }
 }

@@ -22,9 +22,11 @@ class SlideFormPage extends FormPage
         return [
             ID::make(),
             Image::make('Изображение', 'image')
+                ->required()
                 ->dir('slides')
                 ->removable(),
             Number::make('Позиция', 'posit')
+                ->required()
                 ->default(1),
         ];
     }
