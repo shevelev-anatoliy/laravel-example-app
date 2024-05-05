@@ -18,6 +18,7 @@
         "socialiteproviders/vkontakte": "^5.0"
     },
     "require-dev": {
+        "roave/security-advisories": "dev-latest",
         "barryvdh/laravel-ide-helper": "^3.0",
         "fakerphp/faker": "^1.23",
         "laravel-lang/common": "*",
