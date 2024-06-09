@@ -4,11 +4,10 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
-use App\MoonShine\Pages\ExamplePage;
 use App\MoonShine\Resources\PostResource;
 use App\MoonShine\Resources\SlideResource;
+use MoonShine\MoonShineRequest;
 use MoonShine\Providers\MoonShineApplicationServiceProvider;
-use MoonShine\MoonShine;
 use MoonShine\Menu\MenuGroup;
 use MoonShine\Menu\MenuItem;
 use App\MoonShine\Resources\MoonShineUserResource;
@@ -54,7 +53,15 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
             ]),
 
             MenuGroup::make(static fn() => 'Ресурсы', [
-                MenuItem::make('Статьи', new PostResource()),
+                MenuItem::make(
+                    'Статьи',
+                    new PostResource()
+                )->canSee(function (MoonShineRequest $request) {
+                    return $request->user()->isHavePermission(
+                        PostResource::class,
+                        'view'
+                    );
+                }),
 
                 MenuItem::make('Слайды', new SlideResource()),
             ]),
