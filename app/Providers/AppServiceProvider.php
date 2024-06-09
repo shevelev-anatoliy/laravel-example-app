@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Validation\Rules\Password;
@@ -19,6 +20,8 @@ class AppServiceProvider extends ServiceProvider
         $this->setPasswordDefault();
 
         $this->registerSocialite();
+
+        Model::shouldBeStrict(!app()->isProduction());
     }
 
     private function setPasswordDefault(): void
