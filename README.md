@@ -1,6 +1,6 @@
 ## Установка
 
-Скопировать файд **.env.example**
+Скопировать файл **.env.example**
 
 `php artisan key:generate`
 
