@@ -7,3 +7,6 @@
 - `php artisan migrate`
 - `npm install`
 - `vite`
+
+При локальной разработке:
+- `php artisan db:seed`
