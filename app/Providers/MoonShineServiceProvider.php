@@ -41,6 +41,13 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
     protected function menu(): array
     {
         return [
+            MenuItem::make(
+                'На сайт',
+                static fn() => config('app.url'),
+                'heroicons.arrow-top-right-on-square',
+                true,
+            ),
+
             MenuGroup::make(static fn() => 'moonshine::ui.resource.system', [
                MenuItem::make('moonshine::ui.resource.admins_title', new MoonShineUserResource())
                    ->translatable(),
